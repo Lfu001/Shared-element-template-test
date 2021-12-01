@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-amber.min.css" />
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/css">
+        div.pagecontent {
+            margin: 0px 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        {% include "header.html" %}
+        {% include "sidebar.html" %}
+        <main class="mdl-layout__content">
+            <div class="pagecontent">
+                <h3>ライセンス</h3>
+                <p>
+                    このサイトは <a class="license" href="https://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a> 
+                    のもとで配布されている Material Design Lite を使用して製作されています。
+                </p>
+                <style>
+                    a.license {
+                        color: #cb1b57;
+                    }
+                </style>
+            </div>
+            <div class="layout-spacer"></div>
+            <script>
+                function setSpacer() {
+                    let doc_height = document.body.offsetHeight;
+                    let window_top = window.pageYOffset;
+                    let view_y = document.getElementsByClassName("layout-spacer")[0].getBoundingClientRect().top;
+                    let footer_height = document.getElementsByClassName("mdl-mini-footer")[0].offsetHeight;
+                    var spacer = doc_height - window_top - view_y - footer_height;
+                    if (spacer <= 30) {
+                        spacer = spacer + 30;
+                    }
+                    document.getElementsByClassName("layout-spacer")[0].style.paddingBottom = (spacer).toString() + "px";
+                }
+                window.onload = setSpacer;
+                window.onresize = setSpacer;
+            </script>
+            {% include "footer.html" %}
+        </main>
+    </div>
+</body>
+
+</html>
